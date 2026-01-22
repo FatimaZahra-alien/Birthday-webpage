@@ -1,13 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
+import Image from "next/image";
 
-// TypeScript fix for canvas-confetti
-// If TypeScript still complains, create a file `types/canvas-confetti.d.ts` with:
-// declare module "canvas-confetti";
-
-export default function Home(): ReactNode {
+export default function Home(): JSX.Element {
   const audioRef = useRef<HTMLAudioElement>(null);
   const noButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -114,15 +111,19 @@ No matter where life takes us or which universe we’re in, I’d always choose 
       {/* Big Spider-Man floating */}
       {celebrate && (
         <>
-          <img
+          <Image
             src="/images/bg.png"
             alt="Big Spider-Man Left"
-            className="absolute bottom-0 left-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
+            width={384}
+            height={384}
+            className="absolute bottom-0 left-0 opacity-50 animate-float-bg pointer-events-none z-0"
           />
-          <img
+          <Image
             src="/images/bg.png"
             alt="Big Spider-Man Right"
-            className="absolute bottom-0 right-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
+            width={384}
+            height={384}
+            className="absolute bottom-0 right-0 opacity-50 animate-float-bg pointer-events-none z-0"
           />
         </>
       )}
@@ -167,10 +168,12 @@ No matter where life takes us or which universe we’re in, I’d always choose 
           <>
             <h1 className="text-3xl font-extrabold mb-4 text-pink-200">🎉 Happy Birthday My Love 🎂</h1>
 
-            <img
+            <Image
               src="/images/him.jpg"
               alt="My Favorite Person"
-              className="w-40 h-40 mx-auto rounded-2xl object-cover border-4 border-pink-300 shadow-lg mb-4 z-10"
+              width={160}
+              height={160}
+              className="mx-auto rounded-2xl object-cover border-4 border-pink-300 shadow-lg mb-4"
             />
 
             <p className="text-sm leading-relaxed text-white/90 whitespace-pre-wrap mb-4">
@@ -186,10 +189,12 @@ No matter where life takes us or which universe we’re in, I’d always choose 
             {/* Mini Spider-Man hanging */}
             <div className="absolute top-0 right-4 z-20 flex flex-col items-center">
               <div className="w-[2px] h-20 bg-white/60"></div>
-              <img
+              <Image
                 src="/images/image.png"
                 alt="Mini Spider-Man Swinging"
-                className="w-16 h-16 object-contain animate-swing"
+                width={64}
+                height={64}
+                className="object-contain animate-swing"
               />
             </div>
           </>
@@ -225,6 +230,7 @@ No matter where life takes us or which universe we’re in, I’d always choose 
         </>
       )}
 
+      {/* Animations */}
       <style jsx>{`
         @keyframes float-slow {
           0% { transform: translateY(0); opacity: 0; }
@@ -236,35 +242,12 @@ No matter where life takes us or which universe we’re in, I’d always choose 
           animation-timing-function: linear;
           animation-iteration-count: infinite;
         }
-
-        @keyframes fadein {
-          0% { opacity: 0; }
-          100% { opacity: 0.4; }
-        }
-        .animate-fadein {
-          animation: fadein 3s ease forwards;
-        }
-
-        @keyframes swing {
-          0% { transform: rotate(-15deg); }
-          25% { transform: rotate(15deg); }
-          50% { transform: rotate(-10deg); }
-          75% { transform: rotate(10deg); }
-          100% { transform: rotate(-15deg); }
-        }
-        .animate-swing {
-          animation: swing 3s ease-in-out infinite;
-          transform-origin: top center;
-        }
-
-        @keyframes float-bg {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-          50% { opacity: 0.25; }
-          100% { transform: translateY(-50px) rotate(5deg); opacity: 0.2; }
-        }
-        .animate-float-bg {
-          animation: float-bg 20s ease-in-out infinite alternate;
-        }
+        @keyframes fadein { 0% { opacity: 0; } 100% { opacity: 0.4; } }
+        .animate-fadein { animation: fadein 3s ease forwards; }
+        @keyframes swing { 0% { transform: rotate(-15deg); } 25% { transform: rotate(15deg); } 50% { transform: rotate(-10deg); } 75% { transform: rotate(10deg); } 100% { transform: rotate(-15deg); } }
+        .animate-swing { animation: swing 3s ease-in-out infinite; transform-origin: top center; }
+        @keyframes float-bg { 0% { transform: translateY(0) rotate(0deg); opacity: 0.2; } 50% { opacity: 0.25; } 100% { transform: translateY(-50px) rotate(5deg); opacity: 0.2; } }
+        .animate-float-bg { animation: float-bg 20s ease-in-out infinite alternate; }
       `}</style>
     </main>
   );
