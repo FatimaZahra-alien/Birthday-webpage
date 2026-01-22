@@ -1,9 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 import confetti from "canvas-confetti";
 
-export default function Home(): JSX.Element {
+// TypeScript fix for canvas-confetti
+// If TypeScript still complains, create a file `types/canvas-confetti.d.ts` with:
+// declare module "canvas-confetti";
+
+export default function Home(): ReactNode {
   const audioRef = useRef<HTMLAudioElement>(null);
   const noButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -106,31 +110,25 @@ No matter where life takes us or which universe we’re in, I’d always choose 
       <div className="mb-6 text-center text-lg font-semibold text-pink-200 z-10">
         {timeLeft}
       </div>
-      {/* Big Spider-Man floating on left & right corners */}
-{celebrate && (
-  <>
-    {/* Left corner */}
-    <img
-      src="/images/bg.png"
-      alt="Big Spider-Man Left"
-      className="absolute bottom-0 left-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
-    />
 
-    {/* Right corner */}
-    <img
-      src="/images/bg.png"
-      alt="Big Spider-Man Right"
-      className="absolute bottom-0 right-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
-    />
-  </>
-)}
-
-
-
+      {/* Big Spider-Man floating */}
+      {celebrate && (
+        <>
+          <img
+            src="/images/bg.png"
+            alt="Big Spider-Man Left"
+            className="absolute bottom-0 left-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
+          />
+          <img
+            src="/images/bg.png"
+            alt="Big Spider-Man Right"
+            className="absolute bottom-0 right-0 w-64 md:w-96 opacity-50 animate-float-bg pointer-events-none z-0"
+          />
+        </>
+      )}
 
       {/* Main card */}
       <div className="w-full max-w-md rounded-3xl bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl p-8 text-center relative z-10">
-
         {!celebrate ? (
           <>
             <h1 className="text-2xl font-bold mb-4">🕷️ Do you love me?</h1>
@@ -175,7 +173,6 @@ No matter where life takes us or which universe we’re in, I’d always choose 
               className="w-40 h-40 mx-auto rounded-2xl object-cover border-4 border-pink-300 shadow-lg mb-4 z-10"
             />
 
-            {/* Paragraph + spider & love icons */}
             <p className="text-sm leading-relaxed text-white/90 whitespace-pre-wrap mb-4">
               {paragraph}
               <span className="block mt-2 text-base font-semibold italic text-pink-300">
@@ -187,17 +184,14 @@ No matter where life takes us or which universe we’re in, I’d always choose 
             <div className="text-4xl mt-6 animate-pulse z-10">🕷️❤️🎉🎂</div>
 
             {/* Mini Spider-Man hanging */}
-           {/* Mini Spider-Man hanging on the right */}
-<div className="absolute top-0 right-4 z-20 flex flex-col items-center">
-  {/* Thread */}
-  <div className="w-[2px] h-20 bg-white/60"></div>
-  <img
-    src="/images/image.png"
-    alt="Mini Spider-Man Swinging"
-    className="w-16 h-16 object-contain animate-swing"
-  />
-</div>
-
+            <div className="absolute top-0 right-4 z-20 flex flex-col items-center">
+              <div className="w-[2px] h-20 bg-white/60"></div>
+              <img
+                src="/images/image.png"
+                alt="Mini Spider-Man Swinging"
+                className="w-16 h-16 object-contain animate-swing"
+              />
+            </div>
           </>
         )}
       </div>
