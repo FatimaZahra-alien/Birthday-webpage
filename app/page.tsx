@@ -112,14 +112,14 @@ No matter where life takes us or which universe we’re in, I’d always choose 
       {celebrate && (
         <>
           <Image
-            src="/images/bg.png"
+            src="/images/bg.jpg"
             alt="Big Spider-Man Left"
             width={384}
             height={384}
             className="absolute bottom-0 left-0 opacity-50 animate-float-bg pointer-events-none z-0"
           />
           <Image
-            src="/images/bg.png"
+            src="/images/bg.jpg"
             alt="Big Spider-Man Right"
             width={384}
             height={384}
