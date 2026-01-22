@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import confetti from "canvas-confetti";
 import Image from "next/image";
 
-export default function Home(): JSX.Element {
+export default function Home() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const noButtonRef = useRef<HTMLButtonElement>(null);
 
